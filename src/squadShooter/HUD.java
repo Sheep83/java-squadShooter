@@ -62,7 +62,7 @@ public class HUD {
 		g.drawString("turnCount: " + turnCount, 50, 50);
 		g.drawString("Action Points: " + player.getActionPoints(), 50, 100);
 		if(player.selectedTarget != null) {
-		g.drawString("Target: " + player.selectedTarget.x, 50, 150);
+		g.drawString("Target Health: " + player.selectedTarget.getHealth(), 50, 150);
 		}
 		if(!enufAP) {
 			g.setColor(Color.red);

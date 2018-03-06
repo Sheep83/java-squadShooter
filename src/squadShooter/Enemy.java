@@ -12,7 +12,7 @@ import squadShooter.Game.TURN;
 
 
 
-public class Enemy extends GameObject{
+public class Enemy extends GameObject implements Killable{
 	
 	private Handler handler;
 	@SuppressWarnings("unused")
@@ -20,7 +20,7 @@ public class Enemy extends GameObject{
 //	private boolean spooked;
 //	private boolean angry;
 	private boolean dead;
-	int health = 100;
+	private int health = 100;
 	private long attackTimer, timeOfDeath;
 	private Animation moveLeft, moveRight, moveUp, moveDown;
 	private BufferedImage idleSprite;
@@ -218,6 +218,12 @@ public class Enemy extends GameObject{
 
 	public void setTargetPath(Path targetPath) {
 		this.targetPath = targetPath;
+	}
+
+	@Override
+	public void incHealth(int value) {
+		this.health += value;
+		
 	}
 
 

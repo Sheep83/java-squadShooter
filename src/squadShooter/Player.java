@@ -6,12 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
 //import java.util.LinkedList;
 import java.util.Random;
 
 import squadShooter.Game.TURN;
 
-public class Player extends GameObject{
+public class Player extends GameObject implements Killable{
 	
 	Random r = new Random();
 	Handler handler;
@@ -23,12 +24,13 @@ public class Player extends GameObject{
 	private boolean alive;
 //	private long timeOfDeath;
 	private long attackTimer;
-	public GameObject target, selectedTarget;
+	public Killable target, selectedTarget;
 	private String name;
 	private Path targetPath = null;
 	private boolean unitTurn, enufAP;
-	private int actionPoints;
+	private int health, actionPoints;
 	private boolean moving = false;
+	private LinkedList<Ability> abilities;
 
 	public Player(String name, float x, float y, ID id, Handler handler, Textures textures) {
 		super(x, y, id);
@@ -42,6 +44,9 @@ public class Player extends GameObject{
 		moveUp = new Animation(5, textures.player[12], textures.player[13], textures.player[14], textures.player[15]);
 		alive = true;
 		actionPoints = 5;
+		abilities = new LinkedList<Ability>();
+		abilities.add(new Ability("Fire", 20));
+		health = 100;
 	}
 	
 	public Rectangle getBounds() {
@@ -231,6 +236,34 @@ public class Player extends GameObject{
 
 	public void setMoving(boolean moving) {
 		this.moving = moving;
+	}
+
+	public LinkedList<Ability> getAbilities() {
+		return abilities;
+	}
+
+	public void setAbilities(LinkedList<Ability> abilities) {
+		this.abilities = abilities;
+	}
+	
+	public void attack(Killable target, Ability ability) {
+		target.decHealth(ability.getDamage());
+	}
+
+	@Override
+	public void decHealth(int value) {
+		health =- value;
+	}
+
+	@Override
+	public void incHealth(int value) {
+		health += value;
+	}
+
+	@Override
+	public int getHealth() {
+		// TODO Auto-generated method stub
+		return health;
 	}
 	
 //	public GameObject getClosestThreat(LinkedList<GameObject> threats) {

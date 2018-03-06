@@ -61,6 +61,7 @@ public class MouseInput extends MouseAdapter{
 					Enemy target = checkForEnemy(tile);
 					if(target != null) {
 						player.selectedTarget = target;
+						player.attack(target, player.getAbilities().get(0));
 					}else {
 						player.setMoving(true);
 					}
