@@ -134,7 +134,6 @@ public class MouseControl implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 	
