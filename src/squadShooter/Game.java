@@ -54,8 +54,10 @@ public class Game extends Canvas implements Runnable{
 		handler = new Handler();
 		menu = new Menu(this, handler);
 		this.addKeyListener(new KeyInput(handler));
-		this.addMouseListener(new MouseInput(handler));
-		this.addMouseMotionListener(new MouseMotion(handler));
+		MouseControl mouseInput = new MouseControl(handler);
+		this.addMouseListener(mouseInput);
+		this.addMouseMotionListener(mouseInput);
+//		this.addMouseListener(new MouseInput(handler));
 		setupSprites();
 //		initGame();
 		level = new Level(textures);
