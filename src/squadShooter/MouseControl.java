@@ -110,8 +110,6 @@ public class MouseControl implements MouseListener, MouseMotionListener{
 			}
 		}
 		}else if(Game.gameState == STATE.Game) {
-			
-//			HUD hud = Game.getHUD();
 			Player player = (Player)handler.getPlayer();
 			for(int i = 0; i < handler.tiles.size(); i++) {
 				GameTile tile = (GameTile) handler.tiles.get(i);

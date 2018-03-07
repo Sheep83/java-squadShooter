@@ -168,28 +168,7 @@ public class Player extends GameObject implements Killable{
 		int mapY = (int)y/64;
 		return mapY;
 	}
-	
-//	public void moveToMap(Path path) {
-//		for(int i = 0; i < path.getLength(); i++) {
-//			int pathX = path.getStep(i).getX();
-//			int pathY = path.getStep(i).getY();
-//			if(getMapX() != pathX) {
-//				if(getMapX() < pathX) {
-//					velX = 3;
-//				}else {
-//					velX = -3;
-//				}
-//			}else if(getMapY() != pathY) {
-//				if(getMapY() < pathY) {
-//					velY = 3;
-//				}else {
-//					velY = -3;
-//				}
-//			}
-////			setX(path.getStep(i).getX()*64);
-////			setY(path.getStep(i).getY()*64);
-//		}
-//	}
+
 
 	public Path getTargetPath() {
 		return targetPath;
@@ -289,6 +268,28 @@ public class Player extends GameObject implements Killable{
 //		}
 //		
 //	}
+	
+//	public void moveToMap(Path path) {
+//	for(int i = 0; i < path.getLength(); i++) {
+//		int pathX = path.getStep(i).getX();
+//		int pathY = path.getStep(i).getY();
+//		if(getMapX() != pathX) {
+//			if(getMapX() < pathX) {
+//				velX = 3;
+//			}else {
+//				velX = -3;
+//			}
+//		}else if(getMapY() != pathY) {
+//			if(getMapY() < pathY) {
+//				velY = 3;
+//			}else {
+//				velY = -3;
+//			}
+//		}
+////		setX(path.getStep(i).getX()*64);
+////		setY(path.getStep(i).getY()*64);
+//	}
+//}
 	
 }
 

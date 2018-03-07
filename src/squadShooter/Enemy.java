@@ -17,8 +17,6 @@ public class Enemy extends GameObject implements Killable{
 	private Handler handler;
 	@SuppressWarnings("unused")
 	private Textures textures;
-//	private boolean spooked;
-//	private boolean angry;
 	private boolean dead;
 	private int health = 100;
 	private long attackTimer, timeOfDeath;
@@ -85,20 +83,13 @@ public class Enemy extends GameObject implements Killable{
 				Player player = (Player)handler.getPlayer();
 				targetPath = Game.finder.findPath(player, getMapX(), getMapY(), player.getMapX(), player.getMapY());
 			}
-			
-			
-			
-			
 			else if(dead) {
 				if (despawnTimer()) {
 					handler.removeObject(this);
 			}	
 			
-			
 		}
 			
-			
-		
 		moveLeft.runAnimation();
 		moveRight.runAnimation();
 		moveDown.runAnimation();
