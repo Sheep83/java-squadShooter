@@ -128,23 +128,7 @@ public class MouseControl implements MouseListener, MouseMotionListener{
 //					tile.setTarget(true);
 				}
 				tile.setPath(false);
-			}
-			
-//			
-//			if(targetTile != null) {
-//				Path path = Game.finder.findPath(player, player.getMapX(), player.getMapY(), targetTile.getMapX(), targetTile.getMapY());
-//				if(path.getLength() > player.getActionPoints()) {
-//					player.setEnufAP(false);
-//				}
-//				else {
-//					player.setEnufAP(true);
-//					player.setTargetPath(path);
-//					player.setMoving(true);
-//				}
-//				
-////				Game.setPath(path);
-////				player.moveToMap(path);
-//			}		
+			}	
 		}
 	}
 
