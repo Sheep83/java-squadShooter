@@ -12,6 +12,7 @@ public class MouseControl implements MouseListener, MouseMotionListener{
 	private Handler handler;
 	private GameTile targetTile;
 	private long pathTimer;
+	Point currPoint, prevPoint;
 	
 	public MouseControl(Handler handler) {
 		this.handler = handler;
@@ -19,8 +20,43 @@ public class MouseControl implements MouseListener, MouseMotionListener{
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseDragged(MouseEvent event) {
+		System.out.println(event);
+		boolean left = false;
+		boolean right = false;
+		boolean up = false;
+		boolean down = false;
+		if(prevPoint == null) {
+			prevPoint = event.getPoint();
+		}
+		if(event.getX() > prevPoint.getX()) {
+			right = true;
+		}
+		if(event.getPoint().getX() < prevPoint.getX()) {
+			left = true;
+		}
+		if(event.getPoint().getY() > prevPoint.getY()) {
+			down = true;
+		}
+		if(event.getPoint().getY() < prevPoint.getY()) {
+			up = true;
+		}
+		if(up) {
+			Game.camera.offsetY -= 2;
+		}
+		if(down) {
+			Game.camera.offsetY += 2;
+		}
+		if(left) {
+			Game.camera.offsetX -= 2;
+		}
+		if(right) {
+			Game.camera.offsetX +=2;
+		}
+		
+//		prevPoint = event.getPoint();
+		
+
 		
 	}
 
