@@ -10,10 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 //import java.util.Random;
 
-
-
-
-
 public class Game extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 7436840021209078721L;
