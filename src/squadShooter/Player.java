@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 //import java.util.LinkedList;
@@ -241,7 +240,6 @@ public class Player extends GameObject implements Killable{
 
 	@Override
 	public int getHealth() {
-		// TODO Auto-generated method stub
 		return health;
 	}
 	
