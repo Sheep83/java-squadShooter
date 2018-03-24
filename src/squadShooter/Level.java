@@ -42,7 +42,6 @@ public class Level implements TileBasedMap{
 	}
 	
 	public void build(Handler handler, int level) {
-		
 		int tileX = 0;
 		int tileY = 0;
 		this.setArr(new ArrayList<Integer>());
