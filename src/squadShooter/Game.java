@@ -44,11 +44,12 @@ public class Game extends Canvas implements Runnable{
 	
 	public Game() {
 		
-		gameState = STATE.Menu;
+		
 		new Window(WIDTH, HEIGHT, "squadShooter", this);
 		camera = new Camera(0, 0);
 		handler = new Handler();
 		menu = new Menu(this, handler);
+		gameState = STATE.Menu;
 		this.addKeyListener(new KeyInput(handler));
 		MouseControl mouseInput = new MouseControl(handler);
 		this.addMouseListener(mouseInput);
