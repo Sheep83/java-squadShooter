@@ -46,6 +46,7 @@ public class Enemy extends GameObject implements Killable{
 		if(Game.turn == TURN.Enemy) {
 //			Game.camera.setOffsetX(getX()-(Game.WIDTH/2));
 //			Game.camera.setOffsetY(getY()-(Game.HEIGHT/2));
+			if(visible) {
 			if(targetPath != null && targetPath.getLength() > 0) {
 				int targetX = targetPath.getX(0)*64;
 				int targetY = targetPath.getY(0)*64;
@@ -99,6 +100,9 @@ public class Enemy extends GameObject implements Killable{
 		x = Game.clamp((int)x, Game.WIDTH - Game.WIDTH+64, Game.WIDTH-112);
 		y = Game.clamp((int)y, Game.HEIGHT - Game.HEIGHT+64, Game.HEIGHT-112);
 		
+		}else {
+			Game.turn = TURN.Player;
+		}
 		}
 	}
 	
@@ -121,6 +125,7 @@ public class Enemy extends GameObject implements Killable{
 			Game.camera.offsetY = (Game.HEIGHT/2 - y);
 		}
 		Graphics2D g2d = (Graphics2D) g;
+		if(visible) {
 		if(velX < 0) {
 			moveLeft.drawAnimation(g, x + Game.camera.offsetX, y + Game.camera.offsetY, 0);
 			}else if(velX > 0) {
@@ -137,6 +142,7 @@ public class Enemy extends GameObject implements Killable{
 			g2d.setColor(Color.gray);
 			g2d.fillRect((int)x, (int)y, 32, 32);
 			
+		}
 		}
 	}
 	
