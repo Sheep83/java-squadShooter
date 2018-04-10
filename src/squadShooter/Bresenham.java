@@ -41,24 +41,4 @@ public class Bresenham {
         }                                
         return line;
     }
-    
-//    public void plot(Point[][] grid, List<Point> line)
-//    {
-//        int rows = grid.length;
-//        int cols = grid[0].length;
-// 
-//        System.out.println("\nPlot : \n");
-// 
-//        for (int i = 0; i < rows; i++)
-//        {
-//            for (int j = 0; j < cols; j++)
-//            {
-//                if (line.contains(grid[i][j]))
-//                    System.out.print("*");
-//                else
-//                    System.out.print("X");
-//            }
-//            System.out.println();
-//        }
-//    }
 }

@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable{
 		for (int i = 0; i < 1280; i++)
             for (int j = 0; j < 1088; j++)
                 grid[i][j] = new Point(i, j);
-		this.grid = grid;
+		Game.grid = grid;
 		
 	}
 	
