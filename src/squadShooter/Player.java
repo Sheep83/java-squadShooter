@@ -108,7 +108,6 @@ public class Player extends GameObject implements Killable{
 		}else {
 			if (actionPoints != 0) {
 				checkLOS();
-
 			}
 		}
 	}
