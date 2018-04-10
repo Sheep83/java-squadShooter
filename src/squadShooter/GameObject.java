@@ -8,6 +8,7 @@ public abstract class GameObject {
 	protected float x, y;
 	protected ID id;
 	protected float velX, velY;
+	protected boolean visible;
 	
 	public GameObject(float x, float y, ID id) {
 		this.x = x;
@@ -71,6 +72,16 @@ public abstract class GameObject {
 	
 	public float getVelY() {
 		return velY;
+	}
+
+	public void setVisible(boolean b) {
+		this.visible = b;
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public boolean getVisible() {
+		return this.visible;
 	}
 
 }

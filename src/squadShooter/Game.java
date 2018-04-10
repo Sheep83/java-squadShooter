@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 //import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 //import java.io.File;
@@ -38,6 +39,7 @@ public class Game extends Canvas implements Runnable{
 	};
 	public static TURN turn;
 	private Menu menu;
+	private static Point[][] grid;
 	public static Camera camera;
 	public static float offsetX, offsetY;
 	
@@ -60,7 +62,7 @@ public class Game extends Canvas implements Runnable{
 		level = new Level(textures);
 		level.build(handler, 1);
 		Player player = new Player("Brian", 256, 128, ID.Player, handler, textures);
-		Enemy enemy = new Enemy("BadGuy", 512, 128, ID.Enemy, handler, textures);
+		Enemy enemy = new Enemy("BadGuy", 512, 576, ID.Enemy, handler, textures);
 		handler.addObject(player);
 		handler.addObject(enemy);
 		hud = new HUD(handler, textures);
@@ -69,9 +71,23 @@ public class Game extends Canvas implements Runnable{
 		System.out.println("x " + player.getMapX() + "   y  " + player.getMapY());
 		levelCount = 1;
 		turnCount = 0;
+		setGrid();
 		turn = TURN.Player;
 	}
 	
+	private void setGrid() {
+		Point[][] grid = new Point[1280][1088];
+		for (int i = 0; i < 1280; i++)
+            for (int j = 0; j < 1088; j++)
+                grid[i][j] = new Point(i, j);
+		this.grid = grid;
+		
+	}
+	
+	public static Point[][] getGrid(){
+		return grid;
+	}
+
 	private void setupSprites() {
 		
 		BufferedImageLoader loader = new BufferedImageLoader();

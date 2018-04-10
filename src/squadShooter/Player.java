@@ -3,9 +3,11 @@ package squadShooter;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import java.util.List;
 //import java.util.LinkedList;
 import java.util.Random;
 
@@ -30,6 +32,7 @@ public class Player extends GameObject implements Killable{
 	private int health, actionPoints;
 	private boolean moving = false;
 	private LinkedList<Ability> abilities;
+
 
 	public Player(String name, float x, float y, ID id, Handler handler, Textures textures) {
 		super(x, y, id);
@@ -102,10 +105,15 @@ public class Player extends GameObject implements Killable{
 			moveDown.runAnimation();
 			moveUp.runAnimation();
 			}
+		}else {
+			if (actionPoints != 0) {
+				checkLOS();
+
+			}
 		}
-		
 	}
 	
+
 	public void render(Graphics g) {
 		if(Game.turn == TURN.Player) {
 			Game.camera.offsetX = (Game.WIDTH/2 - x);
@@ -241,6 +249,37 @@ public class Player extends GameObject implements Killable{
 	@Override
 	public int getHealth() {
 		return health;
+	}
+	
+	public void checkLOS() {
+		Bresenham b = new Bresenham();
+//		Point[][] grid = new Point[1280][1088];
+//		for (int i = 0; i < 1280; i++)
+//            for (int j = 0; j < 1088; j++)
+//                grid[i][j] = new Point(i, j);
+		for(int i = 0; i < handler.objects.size(); i++) {
+			GameObject tempObject =  handler.objects.get(i);
+			if(tempObject.getId() == ID.Enemy) {
+				tempObject.setVisible(true);
+				int enemyX = (int)tempObject.getX();
+				int enemyY = (int)tempObject.getY();
+				List<Point> line = b.findLine(Game.getGrid(), (int)(this.getX()), (int)(this.getY()), enemyX, enemyY);
+//				System.out.println(line);
+				
+				for(int x = 0; x < handler.tiles.size(); x++) {
+					GameTile tempTile = (GameTile)handler.tiles.get(x);
+					if(tempTile.passable == false) {
+						for(int y = 0; y < line.size(); y++) {
+							Point linePoint = line.get(y);
+							Rectangle tileBounds = tempTile.getRealBounds();
+							if(tileBounds.contains(linePoint)) {
+								tempObject.setVisible(false);
+							}
+						}
+					}
+				}
+			}	
+		}
 	}
 	
 //	public GameObject getClosestThreat(LinkedList<GameObject> threats) {

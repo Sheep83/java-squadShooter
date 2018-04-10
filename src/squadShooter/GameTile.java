@@ -95,6 +95,10 @@ public class GameTile extends GameObject{
 		return new Rectangle((int)(x + Game.camera.offsetX), (int)(y + Game.camera.offsetY), 64, 64);
 	}
 	
+	public Rectangle getRealBounds() {
+		return new Rectangle((int)(x), (int)(y), 64, 64);
+	}
+	
 	public Rectangle getTopBounds() {
 		return new Rectangle((int)(x + Game.camera.offsetX), (int)(y + Game.camera.offsetY), 64, 2);
 	}
