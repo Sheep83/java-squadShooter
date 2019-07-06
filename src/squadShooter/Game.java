@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Game extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 7436840021209078721L;
-	public static final int WIDTH = 1280, HEIGHT = 1024;
+	public static final int WIDTH = 1024, HEIGHT = 768;
 	private Thread thread;
 	private static BufferedImage playerSpriteSheet, enemySpriteSheet, iconSpriteSheet = null;
 	private BufferedImage background = null;
